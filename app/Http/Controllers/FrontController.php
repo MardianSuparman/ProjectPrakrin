@@ -38,4 +38,14 @@ class FrontController extends Controller
         return view('track');
     }
 
+    public function aboute()
+    {
+        return view('aboute');
+    }
+
+    public function detailproduk()
+    {
+        return view('detailproduk');
+    }
+
 }

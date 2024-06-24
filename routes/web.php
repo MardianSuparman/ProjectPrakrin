@@ -31,4 +31,6 @@ Route::get('shop',[FrontController::class, 'shop']);
 Route::get('cart',[FrontController::class, 'cart']);
 Route::get('checkout',[FrontController::class, 'checkout']);
 Route::get('track',[FrontController::class, 'track']);
+Route::get('aboute',[FrontController::class, 'aboute']);
+Route::get('detailproduk',[FrontController::class, 'detailproduk']);
 
