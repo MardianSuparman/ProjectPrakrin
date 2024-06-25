@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\isAdmin;
 
 // Route::get('/', function () {
 //     return view('index');
@@ -17,11 +18,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // });
 
 // route admin (backend)
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth',isAdmin::class]], function() {
     Route::get('/', function(){
         return view('admin.index');
     });
     // untuk route admin lainnya
+    Route::resource('user', App\Http\Controllers\UsersController::class);
 });
 
 //rote frotend
