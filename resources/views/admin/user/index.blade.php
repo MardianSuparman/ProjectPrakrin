@@ -19,7 +19,7 @@
                   </div>
                   <div class="ms-auto">
                       <div class="btn-group">
-                        <a href="{{ Route('user.create') }}" class="btn btn-primary">Tambah Data</a>
+                        <a href="{{ Route('user.create') }}" class="btn btn-primary">Add Data</a>
                           {{-- <button type="button" class="btn btn-primary">Settings</button>
                           <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
                           </button>
@@ -73,54 +73,10 @@
 
                               </tfoot>
                           </table>
+                          {{-- {!! $user->withQueryString()->links('pagination::bootstrap-4') !!} --}}
                       </div>
                   </div>
               </div>
-              <h6 class="mb-0 text-uppercase">DataTable Import</h6>
-              <hr>
-              <div class="card">
-                  <div class="card-body">
-                      <div class="table-responsive">
-                          <table id="example2" class="table table-striped table-bordered">
-                              <thead>
-                                  <tr>
-                                      <th>Name</th>
-                                      <th>Position</th>
-                                      <th>Office</th>
-                                      <th>Age</th>
-                                      <th>Start date</th>
-                                      <th>Salary</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                @php $i = 1; @endphp
-                                @foreach ( $user as $data )
-                                <tr>
-                                    <td>{{ $i++ }}</td>
-                                    <td>{{ $data->name }}</td>
-                                    <td>{{ $data->email }}</td>
-                                    <td>{{ $data->isAdmin== 1 ? 'Admin' : 'User' }}</td>
-                                    <td>
-                                        <form action="{{ Route('user.destroy', $data->id) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <a href="{{ Route('user.edit', $data->id) }}" class="btn btn-warning">
-                                                Edit
-                                            </a>
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                              </tbody>
-                              <tfoot>
-
-                              </tfoot>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-
 
   </div>
 @endsection
