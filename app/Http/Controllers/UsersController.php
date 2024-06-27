@@ -35,15 +35,15 @@ class UsersController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required|min:8',
             'isAdmin' => 'required|boolean',
         ]);
 
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = bcrypt($request->password);
         $user->isAdmin = $request->isAdmin;
         $user->save();
         Alert::success('Success', 'Data Berhasil di Tambahkan')->autoClose(2000);
@@ -83,7 +83,7 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = bcrypt($request->password);
         $user->isAdmin = $request->isAdmin;
         $user->save();
         Alert::success('Success', 'Data Berhasil di Edit')->autoClose(2000);
@@ -98,6 +98,7 @@ class UsersController extends Controller
         $user=User::findOrFail($id);
         // Storage::delete('public/users'. $user->foto);
         $user->delete();
+        toast('Data delete Successfully', 'success')->autoClose(1000);
         return redirect()->route('user.index');
     }
 }
