@@ -22,7 +22,7 @@
     <hr>
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('user.update', $user->id ) }}" method="" enctype="multipart/form-data">
+            <form action="{{ route('user.update', $user->id ) }}" method="post" enctype="multipart/form-data">
                 @method('put')
                 @csrf
                 <div class="mb-3">
@@ -38,7 +38,7 @@
                 <div class="mb-3">
                     <label for="email" class="form-label"> Email </label>
                     <input class="form-control @error('email') is-invalid @enderror" type="text" name="email"
-                        id="email" value="{{ $user->name }}"">
+                        id="email" value="{{ $user->email }}"">
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\user;
+use Validator;
+use Alert;
+
 
 class UsersController extends Controller
 {
@@ -13,6 +16,7 @@ class UsersController extends Controller
     public function index()
     {
         $user = User::all();
+        confirmDelete("Delete", "Are you sure you want to delete?");
         return view('admin.user.index',compact('user'));
     }
 
@@ -42,6 +46,7 @@ class UsersController extends Controller
         $user->password = $request->password;
         $user->isAdmin = $request->isAdmin;
         $user->save();
+        Alert::success('Success', 'Data Berhasil di Tambahkan')->autoClose(2000);
         return redirect()->route('user.index');
     }
 
@@ -81,6 +86,7 @@ class UsersController extends Controller
         $user->password = $request->password;
         $user->isAdmin = $request->isAdmin;
         $user->save();
+        Alert::success('Success', 'Data Berhasil di Edit')->autoClose(2000);
         return redirect()->route('user.index');
     }
 
@@ -90,7 +96,7 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $user=User::findOrFail($id);
-        Storage::delete('public/users'. $user->foto);
+        // Storage::delete('public/users'. $user->foto);
         $user->delete();
         return redirect()->route('user.index');
     }
