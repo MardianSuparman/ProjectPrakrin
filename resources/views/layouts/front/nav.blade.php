@@ -1,6 +1,6 @@
   <!-- header-area-start -->
   <header>
-      <div class="header-top space-bg">
+      {{-- <div class="header-top space-bg">
           <div class="container">
               <div class="row">
                   <div class="col-12">
@@ -11,7 +11,7 @@
                   </div>
               </div>
           </div>
-      </div>
+      </div> --}}
       <div class="logo-area mt-30 d-none d-xl-block">
           <div class="container">
               <div class="row align-items-center">

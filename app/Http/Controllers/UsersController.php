@@ -86,7 +86,7 @@ class UsersController extends Controller
         $user->password = bcrypt($request->password);
         $user->isAdmin = $request->isAdmin;
         $user->save();
-        Alert::success('Success', 'Data Berhasil di Edit')->autoClose(2000);
+        Alert::success('Success', 'Data Berhasil di Edit')->autoClose(2000);    
         return redirect()->route('user.index');
     }
 
