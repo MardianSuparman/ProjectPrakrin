@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth',isAdmin::class]], fun
     // untuk route admin lainnya
     Route::resource('user', App\Http\Controllers\UsersController::class);
     Route::resource('pengguna', App\Http\Controllers\PenggunaController::class);
+    Route::resource('testimoni', App\Http\Controllers\TestimoniController::class);
 });
 
 //rote frotend
